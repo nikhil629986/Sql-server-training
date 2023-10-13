@@ -1,0 +1,50 @@
+Create Schema motor;
+
+Create Table  motor.Customer(
+Customer_Id Int IDENTITY(1,1) Primary Key,
+First_Name Varchar(50),
+Last_Name Varchar(50),
+Date_Of_Birth Date,
+Contact_Number Int,
+Address Varchar(100));
+
+
+Create Table motor.Vehicle(
+Vehicle_Id Int IDENTITY(1,1) Primary Key,
+Vehicle_Brand Varchar(50),
+Model Varchar(50),
+Year INT,
+Vehicle_Identification_Number Varchar(30)
+);
+Create Table motor.Policy(
+Policy_Id Int IDENTITY(1,1) Primary Key,
+Policy_Number Varchar(50),
+StartDate Date,
+EndDate Date,
+Premium_Amount Decimal(10,2),
+Customer_Id INT,
+Vehicle_Id INT,
+FOREIGN KEY (Customer_Id) REFERENCES  motor.Customer (Customer_Id),
+FOREIGN KEY (Vehicle_Id) REFERENCES   motor.Vehicle (Vehicle_Id)
+);
+
+Create Table motor.Claim(
+Claim_Id INT Primary Key,
+DateFiled Date,
+Status Varchar(20),
+Description Text,
+Customer_Id INT,
+FOREIGN KEY (Customer_Id) REFERENCES  motor.Customer (Customer_Id)
+);
+
+
+Create Table  motor.Agent(
+Agent_Id Int Primary Key,
+First_Name Varchar(50),
+Last_Name Varchar(50),
+Contact_No INT,
+Address Varchar(100),
+Customer_Id INT,
+FOREIGN KEY (Customer_Id) REFERENCES  motor.Customer (Customer_Id)
+);
+

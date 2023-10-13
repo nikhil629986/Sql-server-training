@@ -1,0 +1,54 @@
+h1{
+    color:red; border:1px dotted  black
+  }
+  .heading2{
+    color:blue; border:1px dotted  black
+
+  }
+
+  .content{
+    display:inline;
+  }
+  
+  .list>li{
+    display: inline;
+    /* background-color: grey; */
+    padding:0px 0px 5px 0px;
+    margin:0px 0px 8px 0px;
+    border-bottom:2px solid black;
+  }.list>li:hover{
+    color: red;
+    cursor: pointer;
+    /* text-decoration:
+     underline; */
+     border-bottom: 2px solid red;
+  }
+
+  .box{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    left: 40px;
+  }
+  .child{
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    position: relative;
+    left: 40px;
+  }
+  .box1{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    left: 40px;
+  }
+  .child2{
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    position: absolute;
+    left: 40px;
+  }

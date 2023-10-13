@@ -1,0 +1,429 @@
+
+Data : 
+
+Database : collection of organised data  that can be accessed and managed .
+
+DBMS - Database managemnt system : Software that helps you to manage database
+manupulate,
+insertion
+
+Relational DBMS  : 
+Relation needed - key constrains
+Tables
+column
+rows.
+
+Storage 
+1) tables --- Files, videos, scripts,
+redundancy
+
+Modification of data : 
+
+Number of user 
+
+
+
+SQL : Structured query language : this is used to do operation on relational dbms
+modify object
+manupulating the data
+
+
+
+
+SQl Server : software built microsoft which enables you to create relational DBMS
+
+previously : it was with windows 
+2016 :  made it available for Linux
+
+Versions : 
+enterprise edition : Organisation , high critical workload
+Standard  :  Small organisation . cloud premise as well as inhouse
+Devloper Version : mostly used for devlopment purpose, testing . 
+Express  edition  :Learning Purpose
+
+
+Sample data:
+
+SQL server  database :
+user database 
+
+create database test123
+to categorise the data on applicationlevel.
+
+System database :
+ Automatically gets created when we install sql server
+
+
+Syetem database :
+master : stores instance level information.logon, account, configuration
+model : template database how a user should new database .
+Msdb : used by  sql server . and hold scheduling alerts and job information.
+tempdb : it holds the temporory objects created by user.
+
+Sql server Schema :
+Subcategory within the databse.
+
+user defined schemas.
+
+create schema test1;
+create schema test2;
+create schema test3;
+
+dbo : is default schema in sql server.
+
+Database can have multiple schemas , but one schema will have only one database
+
+
+
+
+
+sql server Datatype :
+
+Numeric :
+bit  - 0,1 -- Smallest datatype - 1 byte  
+tinyint - 0 to 255   -- 1 byte  
+smallint --  -32768 to 32767  -- 2 bytes
+int --   2147483648 -- 4 bytes
+bigint  9223372036854775808 --8 bytes
+
+decimal(10,2 )  : 2 precions after decimal poitn and it will be allowed max length of 10
+
+
+Character/string : 
+char(n) -- store string of length n   --- n bytes
+varchar(n) --  store string max  length of n --  n bytes + 2 bytes
+text  ---  length of string + 2 byte
+
+address char(100)  ------ 100 bytes
+abc  ---100 bytes
+pqrs --100 bytes --- 200 bytes
+
+
+address varchar(100)  
+abc  ---5 bytes
+pqrs --6 bytes  ---- 11 bytes
+
+
+address text  
+abc  ---5 bytes
+pqrs --6 bytes  ---- 11 bytes
+
+
+Date and Time
+
+date --  0001-01-01 through 9999-12-31  -- 3 bytes 
+datetime --- 1753-01-01 00:00:00 through 9999-12-31 -  8 bytes
+datetime2  1753-01-01 00:00:00 through 9999-12-31  -- milliseconds
+time  --  00:00:00.0000000 through 23:59:59.9999999 - 5 bytes
+
+
+
+
+sql server Create table :
+
+
+CREATE TABLE regions (
+	region_id INT IDENTITY(1,1) PRIMARY KEY,
+	region_name VARCHAR (25) DEFAULT NULL
+);
+
+CREATE TABLE  schema_name.table_name(
+col_name1 datatype constraint,
+col_name2 datatype constraint,
+col_name3 datatype constraint )
+
+drop table : ---
+drop table test3.employees 
+
+add columns :
+
+alter table test3.employees
+add  	department_id INT ;
+
+drop cloumn
+
+alter table test3.employees
+drop column  	department_id  ;
+
+reanme  part 
+exec sp_rename
+
+
+SQL Queries
+
+insert :
+insert values all column -
+insert data without column names --- mandatory to have all values for all columns within the table
+insert with specific columns --- rest of the column populate null values
+insert multiple records
+
+delete : it will create logs
+
+Delete with condition
+delete from schema_name.table_name where condition
+
+Delete without condition : 
+delete from  from schema_name.table_name ; 
+
+truncate : all data erased without logs
+ 
+truncate table  dbo.regions
+ 
+update  : 
+
+used to change the existing data from the table.
+
+update schema_name.table_name
+set COl_name = new_value
+where condition
+
+update dbo.[regions]
+set  Description ='Beautiful Region in the world' ,
+col1 ='aaaa',
+Region_id = 5
+where region_name ='Asia'
+
+
+select : 
+select all column   :  * 
+Select specific columns
+
+Alias for COlumn : 1) with as statement  2)  provide new name in double quotes
+ where  : 
+ Conditional operators
+ --------------------
+ = equal
+ > greater than
+ < less than
+ >=
+ <= 
+ <> or !=  --- Not equal
+ between   wanted to have condition range
+ in   -- on column with diffrent selection criteria  
+ like  -- specific character pattenn type column , %
+
+aggregated functions
+Group by  : 
+ 
+count
+sum
+min
+max
+avg
+Cube ------
+rollup ------------
+
+select  col_name , aggregate_function_column
+from table_name
+where  condition
+group by  col_name
+having  aggregate_function_column
+order by 
+
+having  : filter on aggregated column 
+
+order by : it is used to sort your dataset in ascending or descending order of specified column.
+this cluse must be specified after where , group by clause or having 
+
+Merge : -- at end
+
+CREATE TABLE SourceProducts(
+    ProductID		INT,
+    ProductName		VARCHAR(50),
+    Price			DECIMAL(9,2)
+)
+   
+INSERT INTO SourceProducts(ProductID,ProductName, Price) VALUES(1,'Table',100)
+INSERT INTO SourceProducts(ProductID,ProductName, Price) VALUES(2,'Desk',80)
+INSERT INTO SourceProducts(ProductID,ProductName, Price) VALUES(3,'Chair',50)
+INSERT INTO SourceProducts(ProductID,ProductName, Price) VALUES(4,'Computer',300)
+   
+CREATE TABLE TargetProducts(
+    ProductID		INT,
+    ProductName		VARCHAR(50),
+    Price			DECIMAL(9,2)
+)
+   
+INSERT INTO TargetProducts(ProductID,ProductName, Price) VALUES(1,'Table',100)
+INSERT INTO TargetProducts(ProductID,ProductName, Price) VALUES(2,'Desk',180)
+INSERT INTO TargetProducts(ProductID,ProductName, Price) VALUES(5,'Bed',50)
+INSERT INTO TargetProducts(ProductID,ProductName, Price) VALUES(6,'Cupboard',300)
+  
+SELECT * FROM SourceProducts
+SELECT * FROM TargetProducts
+
+
+merge  TargetProducts as tgt
+using  SourceProducts as src
+on src.ProductID = tgt.ProductID 
+when not matched by target  then
+		insert (ProductID, ProductName , Price ) values
+		(src.ProductID, src.ProductName , src.Price )
+when matched  then  update 
+		set tgt.Price =src.price,
+		tgt.ProductName =src.ProductName  ;
+
+Table -relationship 
+one to one  : emp to emp_passport_details
+One to many : Emp to Emp_depandents
+Many to Many : Emp to EMp_skill
+
+Primary Key ---
+Unique Identifier for the row.
+
+It can not have null values.
+One table will have primary key.
+it can be a combination of Multiple columns.
+Can not be duplicate in the tables
+Most of the times Primary key comes with identity column 
+ IDENTITY(1,1)  --- while creating a table if we specifies identity to the column then with each insert it will auto increments it value.
+
+Create/Mofify Prmary key 
+
+Foreign key --- 
+
+Foreign key column from the table  is linked with Primary key column of another table.
+A table which has foreign key is called child table
+and a table whose key the column refers is called parent table.
+
+We can not insert the data in child table , without having the corrosponding entry in parent table
+
+we can define any number of foreign keys in a table that refers to multiple parent tables
+
+
+
+Check constraint 
+
+unique constraint ;
+
+if we wanted to have unique values for the column then we can create unique constrain for the coulmn.
+
+Diffrence between primary and unique, is primary key wont allow to have null values.
+we can have many unique constarins defined on table.
+
+CREATE TABLE Employee(EmployeeID int,
+    FirstName nvarchar(50) NOT NULL,  
+    LastName nvarchar(50) NOT NULL, 
+    EMail nvarchar(50),
+    PhoneNo varchar(15),
+    ADD CONSTRAINT UNQ_Emp_Phone Unique(PhoneNo))
+	
+ALTER TABLE Employee   
+ADD CONSTRAINT UNQ_Emp_Phone Unique(PhoneNo)
+
+
+
+JOins 
+-----------------------
+
+
+With  join operation  
+
+
+
+inner join / Normal Join /Equi Join
+
+only matching records from both  will be displayed as output
+
+left outer join : All records from the left table and matching records from the right table will be selected.
+right outer join  :  All records from the right table and matching records from the left table will be selected.
+full outer join : Alll matching + non matching records from both tables
+Cross join / Cartesian product : Each record from each table will be joined with each record table from another table.
+ Ie if we have 4 records in tableA and 3 records in tableB then we will get 12 rows as output
+
+
+
+CREATE TABLE Jn_regions (
+	region_id INT ,
+	region_name VARCHAR (25) DEFAULT NULL
+);
+
+INSERT INTO Jn_regions(region_id,region_name) VALUES (1,'Europe');
+INSERT INTO Jn_regions(region_id,region_name) VALUES (2,'Americas');
+INSERT INTO Jn_regions(region_id,region_name) VALUES (3,'Asia');
+INSERT INTO Jn_regions(region_id,region_name) VALUES (4,'Middle East and Africa');
+
+CREATE TABLE Jn_countries (
+	country_id  char(2),
+	country_name VARCHAR (40) DEFAULT NULL,
+	region_id INT NOT NULL
+	
+);
+
+
+INSERT INTO Jn_countries(country_id,country_name,region_id) VALUES ('EG','Egypt',5);
+INSERT INTO Jn_countries(country_id,country_name,region_id) VALUES ('AR','Argentina',2);
+INSERT INTO Jn_countries(country_id,country_name,region_id) VALUES ('AU','Australia',3);
+INSERT INTO Jn_countries(country_id,country_name,region_id) VALUES ('BE','Belgium',1);
+
+
+select * from Jn_regions; 
+select * from Jn_countries;
+
+select  cntry.country_name ,cntry.region_id , rgn.region_id, rgn.region_name
+from  Jn_countries cntry  inner  join  Jn_regions rgn  on cntry.region_id = rgn.region_id;
+select  cntry.country_name ,cntry.region_id , rgn.region_id, rgn.region_name
+from  Jn_countries cntry  left  join  Jn_regions rgn  on cntry.region_id = rgn.region_id;
+select  cntry.country_name ,cntry.region_id , rgn.region_id, rgn.region_name
+from  Jn_countries cntry  right  join  Jn_regions rgn  on cntry.region_id = rgn.region_id;
+select  cntry.country_name ,cntry.region_id , rgn.region_id, rgn.region_name
+from  Jn_countries cntry  Full  join  Jn_regions rgn  on cntry.region_id = rgn.region_id;
+select  cntry.country_name ,cntry.region_id , rgn.region_id, rgn.region_name
+from  Jn_countries cntry   cross join  Jn_regions rgn ;
+
+
+
+ union  All:
+ it combines diffrent table of same structure
+ union 
+ operation selects the distinct / unique records from the table
+ 
+Intersect
+
+it will give the result of the records which falls under both table
+
+except  :
+
+records which are not present in another table will be selected
+
+
+Subquery - Subquery,  it is a qury nested inside another statement :
+
+exceution - 1 - subquery  2 outer query
+
+
+nested subqueries  : subquery inside the subqueries are the nested subquery  
+
+Correlated subquery : it is a kind of subquery which has a dependancy on outer query :
+
+1 Outer query  , Sub_query 
+
+Exists   it is just a bollean operation which returns true or false  . 
+We can use that in where condition in such a way theat a subquery will return the result then it will betreated as true else false
+
+ANY - Any clause , If inner query return any row then it will treat it as true and outer query will give the result.
+ALL - If inner quey gives entire data from then only it will treat as true else it will teat as false
+
+
+Common Table Expression - CTE 
+
+
+Recursive CTE : 
+
+
+
+ Pivot; Multiple row to a single row will be chived Pivot
+ 
+ 
+
+Cube, rollup  : basically used moreover for analytica purpose to get insifhtss at diffrent heirachy levels defined
+
+cubes -- it will have data for all possible combinations
+rollup - 
+
+Merge : 
+
+Case statement  :
+
+Coalesce  : It returnd the not values.
+nullif : it compares the variables and if those eaual then it will return null else it will return first variable.

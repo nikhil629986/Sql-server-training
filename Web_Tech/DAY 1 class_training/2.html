@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box">
+    
+    </div>
+    <script>
+      var a = 5; //Number
+      var b = "Hello"; //String
+      var c = "5"; //String
+      var d = true; //Boolean
+      var e = 5.5; //Number
+      var d = ["2", "3", true, 5.5, [5, 6]]; //array
+      //array access
+      var e = {
+        name: "Person 1",
+        age: 30,
+        isEmployeed: true,
+        address: [{ line: "Line 1" }, { line: "Line 2" }],
+        metadata: {
+          key: "value",
+        },
+      };
+      console.log(e.name);
+      console.log(e.address[1].line);
+      f = null;
+      g = undefined;
+
+      //diffrence between null and undefined
+      console.log(null + 5); //ans is 5
+      console.log(undefined + 5); //ans is nan
+      h = function () {
+        console.log("Say Hi");
+      };
+      h();
+
+      function i(param1, param2) {
+        return param1 + param2;
+      }
+
+      var result = i(5, 6);
+      console.log(result);
+///creating the new elemet through javascript
+      var heading=document.createElement('h1')
+      heading.innerText="Hello, world!";
+      heading.style.color="red"
+      heading.style.border="1px solid black"
+    //   document.body.appendChild(heading);
+
+
+      var box=document.getElementById('box');
+      box.appendChild(heading);
+
+      //looping
+      for (var i = 0; i < 10; i++) {
+        var box=document.createElement("div")
+        box.style.background="red";
+        box.style.position="relative"
+        box.style.left="200px"
+        box.style.width="100px"
+        box.style.height="100px"
+        box.style.marginBottom="10px"
+        
+
+       document.body.appendChild(box)
+       
+       ;
+      }
+    </script>
+  </body>
+</html>

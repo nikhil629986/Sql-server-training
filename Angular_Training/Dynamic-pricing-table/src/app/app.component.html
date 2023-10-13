@@ -1,0 +1,19 @@
+<section class="pricing py-5">
+  <div class="container">
+    <div class="pane">
+      <app-card
+        *ngFor="let card of CardContent"
+        [Type]="card.Type"
+        [Price]="card.Price"
+        [UserQuantity]="card.UserQuantity"
+        [Storage]="card.Storage"
+        [PublicProjects]="card.PublicProjects"
+        [Community]="card.Community"
+        [PrivateProjects]="card.PrivateProjects"
+        [PhoneSupplier]="card.PhoneSupplier"
+        [Domains]="card.Domains"
+        [Status]="card.Status"
+      ></app-card>
+    </div>
+  </div>
+</section>
