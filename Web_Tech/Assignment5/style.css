@@ -66,6 +66,7 @@ body{
 font-weight: lighter;
 }
 #jewellery img{
+    margin: 2vh;
     height: 15vh;
     width: 10vw;
     
@@ -93,6 +94,7 @@ font-weight: lighter;
     height: 40vh;
 }
 #Wishlist img{
+    margin: 2vh;
     height: 24vh;
     width: 13vw;
     
