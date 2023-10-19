@@ -51,9 +51,10 @@ function filterProductsByCategory(category, products) {
                         <h5 class="card-title">${product.title}</h5>
                         <p><strong>Category:</strong> ${product.category}</p>
                         <p><strong>Price:</strong> ₹${product.price}</p>
+                        </a>
                         <button class="btn-cart" onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.category}', '${product.description}', '${product.image}')">Add to Cart</button>
                     </div>
-                </a>
+               
             </div>
         `;
 
