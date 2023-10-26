@@ -30,3 +30,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 netlify link
 https://admin-dashboard-phase1.netlify.app/
+
+https://admindashboard-nikhil.netlify.app/
