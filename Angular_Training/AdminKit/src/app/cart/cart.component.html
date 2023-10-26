@@ -1,0 +1,36 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cart of cartData">
+        <td><img src="{{ cart.image }}" alt="{{ cart.name }}" height="25vh" width="20vh"></td>
+        <td>{{ cart.name }}</td>
+        <td>{{ cart.price }}</td>
+        <td>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-number">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </span>
+            <input type="text" class="form-control input-number">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-number" >
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="DeleteFromCart(cart)">Delete From Cart</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

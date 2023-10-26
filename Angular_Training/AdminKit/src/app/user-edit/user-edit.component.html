@@ -1,0 +1,22 @@
+
+<form [formGroup]="EditForm"  (ngSubmit)="saveUser()">
+    <div class="form-group">
+      <label for="usernameInput">Username</label>
+      <input type="text" class="form-control" id="usernameInput"  placeholder="Enter username"  formControlName="username">
+    </div>
+    
+    <div class="form-group">
+      <label for="emailInput">Email address</label>
+      <input type="email" class="form-control" id="emailInput" placeholder="Enter email" formControlName="email_id">
+    </div>
+    
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input type="password" class="form-control" id="passwordInput" placeholder="Password" formControlName="password" >
+    </div>
+    
+    <button  class="btn btn-primary">Save</button>
+    
+    <a [routerLink]="['/user']" class="btn btn-secondary">Back to User List</a>
+
+  </form>

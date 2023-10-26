@@ -1,0 +1,8 @@
+<p>home works!</p>
+<ul>
+    <li *ngFor="let blog of blogService.blogs ">
+        <a routerLink="/blog/{{ blog.id }}">{{blog.title}}</a>
+
+    </li>
+</ul>
+<button (click)="addUser({name:'Person3',id:3})">Add</button>
