@@ -1,0 +1,15 @@
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\bin\Debug\net6.0\c# training.exe
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\bin\Debug\net6.0\c# training.deps.json
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\bin\Debug\net6.0\c# training.runtimeconfig.json
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\bin\Debug\net6.0\c# training.dll
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\bin\Debug\net6.0\c# training.pdb
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.csproj.AssemblyReference.cache
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.AssemblyInfoInputs.cache
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.AssemblyInfo.cs
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.csproj.CoreCompileInputs.cache
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.dll
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\refint\c# training.dll
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.pdb
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\c# training.genruntimeconfig.cache
+C:\Users\NIKUM25\Desktop\Sql server training\c# training\obj\Debug\net6.0\ref\c# training.dll

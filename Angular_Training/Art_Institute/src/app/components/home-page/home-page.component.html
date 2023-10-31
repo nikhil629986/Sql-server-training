@@ -5,7 +5,7 @@
     <h1>AIC Explorer</h1>
     <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
       <input
-        class="form-control me-2"
+        class="form-control me-2 search"
         type="search"
         placeholder="Search Artworks"
         formControlName="search"
@@ -31,7 +31,15 @@
 
 <div class="artworks-container">
   <div class="row justify-content-center">
-    <div class="col-md-4" *ngFor="let artwork of artworks">
+    <div
+      class="col-md-4"
+      *ngFor="
+        let artwork of artworks
+          | slice
+            : paginator.pageIndex * paginator.pageSize
+            : (paginator.pageIndex + 1) * paginator.pageSize
+      "
+    >
       <div class="artwork card">
         <div class="artwork-image card-img-top">
           <img
@@ -46,25 +54,24 @@
           <span *ngIf="!artwork.image_id">No image available</span>
         </div>
         <div class="artwork-details card-body">
-          <h2 class="artwork-title card-title">{{ artwork.title }}</h2>
+          <h2 class="artwork-title card-title">{{ artwork.title|slice:0:20 }}</h2>
           <p class="artwork-date card-text">{{ artwork.date_display }}</p>
           <a [routerLink]="['/description', artwork.id]" class="btn btn-primary"
             >View Details</a
           >
           <a
-            [routerLink]="['/description', artwork.id]"
-            class="btn"
-            (click)="addToCollection(artwork)"
-            >❤</a
+           class="btn" (click)="addToCollection(artwork)"><p style="font-size: xx-large; color: red; margin-left: 2px">
+              ❤
+            </p></a
           >
         </div>
       </div>
     </div>
   </div>
+  <mat-paginator
+    #paginator
+    [length]="artworks.length"
+    [pageSize]="10"
+    [pageSizeOptions]="[4, 8, 20, 40, 100]"
+  ></mat-paginator>
 </div>
-<mat-paginator
-  [length]="totalPages"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  (page)="onPaginateChange($event)"
-></mat-paginator>

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
 import { ArtworkListService } from '../../Service/ArtworkList.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
 interface Artwork {
   title: string;
   image_id: string | null;
@@ -12,12 +13,15 @@ interface Artwork {
 
 }
 
+  
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   artworks: Artwork[] = [];
   currentPage = 1;
   totalPages = 0;
@@ -40,6 +44,7 @@ export class HomePageComponent implements OnInit {
       .subscribe((res) => {
         this.artworks = res.data;
   console.log(this.artworks)
+  this.paginator.length=this.artworks.length
       });
 
     

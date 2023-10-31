@@ -84,13 +84,17 @@
     background-color: #007bff;
   }
   .artworks-container {
-    margin: 0 auto;
-    padding: 20px;
+    margin: 39px auto;
+    padding: 96px;
   }
   .artworks-container {
     justify-content: center;
   }
   
+  .search{
+    width: 20vw;
+    height: 5vh;
+  }
   @media (max-width: 767px) {
     .artworks-container {
       justify-content: center;

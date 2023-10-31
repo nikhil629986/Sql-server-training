@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import{HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +17,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ComponentsModule,
     HttpClientModule
     ,ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
