@@ -1,0 +1,32 @@
+
+.navbar-nav .nav-link {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.navbar-nav .form-control {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+
+.navbar-nav .btn {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+img{
+  width: 5vw; height: 10vh
+}
+@media (max-width: 767px) {
+  .artworks-container {
+    justify-content: center;
+    margin-left: 10vw;
+  }
+  img{
+    width:15vw; height: 10vh
+  }
+  
+}
+
+
+

@@ -1,0 +1,70 @@
+<app-header></app-header>
+
+<div class="homepage container">
+  <div class="homepage-header">
+    <h1>AIC Explorer</h1>
+    <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search Artworks"
+        formControlName="search"
+      />
+      <button
+        class="btn btn-outline-success"
+        type="submit"
+        (click)="onSubmit()"
+      >
+        Search
+      </button>
+    </form>
+    <hr />
+    <img src="../../../assets/cover image.jpg" class="w-100" />
+    <p style="font-size: 3vh; font-family: serif">
+      Explore thousands of artworks from the Art Institute of Chicago (AIC).
+      Save your favorite artworks to your profile and create custom collections
+      to share.
+    </p>
+  </div>
+</div>
+<hr style="font-weight: 500" />
+
+<div class="artworks-container">
+  <div class="row justify-content-center">
+    <div class="col-md-4" *ngFor="let artwork of artworks">
+      <div class="artwork card">
+        <div class="artwork-image card-img-top">
+          <img
+            *ngIf="artwork.image_id"
+            [src]="
+              'https://www.artic.edu/iiif/2/' +
+              artwork.image_id +
+              '/full/843,/0/default.jpg'
+            "
+            alt="{{ artwork.title }}"
+          />
+          <span *ngIf="!artwork.image_id">No image available</span>
+        </div>
+        <div class="artwork-details card-body">
+          <h2 class="artwork-title card-title">{{ artwork.title }}</h2>
+          <p class="artwork-date card-text">{{ artwork.date_display }}</p>
+          <a [routerLink]="['/description', artwork.id]" class="btn btn-primary"
+            >View Details</a
+          >
+          <a
+            [routerLink]="['/description', artwork.id]"
+            class="btn"
+            (click)="addToCollection(artwork)"
+            >❤</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<mat-paginator
+  [length]="totalPages"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPaginateChange($event)"
+></mat-paginator>

@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Date</th>
+              <th></th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let artwork of collection" class="card-table " >
+              <td><img class="card-img-top" src="https://www.artic.edu/iiif/2/{{ artwork.image_id }}/full/843,/0/default.jpg" alt="{{ artwork.title }}"></td>
+              <td>{{ artwork.title }}</td>
+              <td>{{ artwork.date_display }}</td>
+              <td><button class="btn btn-primary " (click)="removeItem(artwork.id)">Remove </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

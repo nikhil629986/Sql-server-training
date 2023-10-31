@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="card bg-dark text-white">
+      <img
+        class="card-img img-fluid"
+        src="https://www.artic.edu/iiif/2/{{ artwork[0].data.image_id }}/full/843,/0/default.jpg"
+        alt=""
+        alt="Card image"
+      />
+      <div class="card-img-overlay">
+        <h5 class="card-title">{{ artwork[0].data.date_display }}</h5>
+        <p class="card-text">{{ artwork[0].data.title }}</p>
+      </div>
+     
+    </div><br>
+    
+    <button class="btn btn-primary ms-4" (click)=addToCollection(artwork[0].data)>
+      Add To Collection
+    </button>
+   
+
+  </div>
+  <div class="card-description">
+    <h3>Description:</h3>
+    <span [innerHTML]="artwork[0].data.description"></span>
+  </div>
+  
