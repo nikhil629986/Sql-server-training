@@ -33,9 +33,7 @@
   <div class="row justify-content-center">
     <div
       class="col-md-4"
-      *ngFor="
-        let artwork of artworks
-          | slice
+      *ngFor="let artwork of artworks|slice
             : paginator.pageIndex * paginator.pageSize
             : (paginator.pageIndex + 1) * paginator.pageSize
       "
@@ -54,13 +52,15 @@
           <span *ngIf="!artwork.image_id">No image available</span>
         </div>
         <div class="artwork-details card-body">
-          <h2 class="artwork-title card-title">{{ artwork.title|slice:0:20 }}</h2>
+          <h2 class="artwork-title card-title">
+            {{ artwork.title | slice : 0 : 20 }}
+          </h2>
           <p class="artwork-date card-text">{{ artwork.date_display }}</p>
           <a [routerLink]="['/description', artwork.id]" class="btn btn-primary"
             >View Details</a
           >
-          <a
-           class="btn" (click)="addToCollection(artwork)"><p style="font-size: xx-large; color: red; margin-left: 2px">
+          <a class="btn" (click)="addToCollection(artwork)"
+            ><p style="font-size: xx-large; color: red; margin-left: 2px">
               ❤
             </p></a
           >

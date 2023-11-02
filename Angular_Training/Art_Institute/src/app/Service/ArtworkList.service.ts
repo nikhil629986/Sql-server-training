@@ -26,7 +26,7 @@ export class ArtworkListService {
   addtoCollection(data: Artwork)
   {  
     const favData = JSON.parse(localStorage.getItem('favData') || '{}');
- 
+     console.log(typeof(favData));
     if (favData[data.id]) {
       alert(`${data.title} already in favourites!`);
     } else {
